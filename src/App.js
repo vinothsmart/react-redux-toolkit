@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { actions } from "./store/index";
 
 function App() {
   const counter = useSelector((state) => state.counter);
@@ -7,15 +8,15 @@ function App() {
   const dispatch = useDispatch();
 
   const increment = useCallback(() => {
-    dispatch({ type: "INC" });
+    dispatch(actions.increment());
   }, [dispatch]);
 
   const decrement = useCallback(() => {
-    dispatch({ type: "DEC" });
+    dispatch(actions.decrement());
   }, [dispatch]);
 
   const addBy = useCallback(() => {
-    dispatch({ type: "ADD", payload: 10 });
+    dispatch(actions.addBy(10));
   }, [dispatch]);
 
   return (
