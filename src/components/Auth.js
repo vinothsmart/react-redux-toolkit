@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/authSlice";
 
 import "./Auth.css";
 
 const Auth = () => {
+  const dispatch = useDispatch();
+  const handelSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(authActions.login());
+    },
+    [dispatch]
+  );
+
   return (
     <div className="container">
-      <h1>Login</h1>{" "}
-      <form>
+      <h1>Login</h1>
+      <form onSubmit={handelSubmit}>
         <label htmlFor="id">Id</label>
         <input type="text" name="id" id="id" />
         <label htmlFor="password">Password</label>
