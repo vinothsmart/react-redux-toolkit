@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       state.itemsList = action.payload.itemsList;
     },
     setShowCart(state) {
-      state.showCart = true;
+      state.showCart = !state.showCart;
     },
   },
 });
