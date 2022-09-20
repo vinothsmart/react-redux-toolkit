@@ -12,9 +12,10 @@ const CartItems = () => {
         {cartItems.map((item) => (
           <li key={item.id}>
             <CartItem
+              quantity={item.quantity}
               id={item.id}
               price={item.price}
-              total={item.total}
+              total={item.totalPrice}
               name={item.name}
             />
           </li>
