@@ -9,13 +9,17 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
-    fetch(
-      "https://redux-http-bc782-default-rtdb.firebaseio.com/cartItems.json",
-      {
-        method: "PUT",
-        body: JSON.stringify(cart),
-      }
-    );
+    const sendRquest = async () => {
+      const res = await fetch(
+        "https://redux-http-bc782-default-rtdb.firebaseio.com/cartItems.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+      await res.json();
+    };
+    sendRquest();
   }, [cart]);
   return (
     <div className="App">
